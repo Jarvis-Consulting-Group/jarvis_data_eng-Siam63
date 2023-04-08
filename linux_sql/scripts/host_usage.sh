@@ -19,17 +19,16 @@ hostname=$(hostname -f)
 
 #Retrieve hardware specification variables
 #xargs is a trick to trim leading and trailing white spaces
-#memory_free=$(echo "$vmstat_mb" | awk '{print $4}'| tail -n1 | xargs)
-memory_free=$(vmstat --unit M | tail -1 | awk -v col="4" '{print $col}' | xargs)
+memory_free=$(echo "$vmstat_mb" | awk '{print $4}'| tail -n1 | xargs)
 
 #cpu_idle=$(echo "$vmstat_mb" #todo
-cpu_idle=$(vmstat --unit M | tail -1 | awk -v col="15" '{print $col}' | xargs)
+cpu_idle=$(echo "$vmstat_mb" | tail -1 | awk -v col="15" '{print $col}' | xargs)
 
 #cpu_kernel=$(echo "$vmstat_mb" #todo
-cpu_kernel=$(vmstat --unit M | tail -1 | awk -v col="14" '{print $col}' | xargs)
+cpu_kernel=$(echo "$vmstat_mb" | tail -1 | awk -v col="14" '{print $col}' | xargs)
 
 #disk_io=$(vmstat -d | awk '{print $10}' #todo
-disk_io=$(vmstat --unit M -d | tail -1 | awk -v col="10" '{print $col}' | xargs)
+disk_io=$(vmstat -d | tail -1 | awk -v col="10" '{print $col}' | xargs)
 
 #disk_available=$(df -BM / ...
 disk_available=$(df -BM / | tail -1 | awk -v col="4" '{print $col}' | xargs)
@@ -43,12 +42,13 @@ host_id="(SELECT id FROM host_info WHERE hostname='$hostname')";
 
 #PSQL command: Inserts server usage data into host_usage table
 #Note: be careful with double and single quotes
-insert_stmt=INSERT INTO host_usage(timestamp, hostname, memory_free, cpu_idle, cpu_kernel, disk_available,
-timestamp, host_id)
-VALUES('$timestamp', '$hostname', '$memory_free', '$cpu_idle', '$cpu_kernel', '$disk_available', '$timestamp', '$host_id')
+insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
+SELECT '$timestamp', '$host_id', '$memory_free', '$cpu_idle', '$cpu_kernel', '$disk_io', '$disk_available'
+FROM host_info
+WHERE host_info.hostname='$psql_host'";
 
 #set up env var for pql cmd
 export PGPASSWORD=$psql_password
 #Insert date into a database
-psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c '$insert_stmt'
+psql -h $psql_host -p $psql_port -d $db_name -U $psql_user -c "$insert_stmt"
 exit $?
