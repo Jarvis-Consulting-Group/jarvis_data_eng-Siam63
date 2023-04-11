@@ -29,9 +29,8 @@ disk_available=$(df -BM / | tail -1 | awk -v col="4" '{print $col}' | xargs)
 timestamp=$(date '+%Y-%m-%d %H:%M:%S' | xargs)
 
 # Insert server usage data into host_usage table1
-insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available
-                )
-                SELECT('$timestamp', '$host_id', '$memory_free', '$cpu_idle', '$cpu_kernel','$disk_io', '$disk_available')
+insert_stmt="INSERT INTO host_usage(timestamp, host_id, memory_free, cpu_idel, cpu_kernel, disk_io, disk_available)
+                SELECT'$timestamp', id, '$memory_free', '$cpu_idle', '$cpu_kernel','$disk_io', '${disk_available%%M}'
                 FROM host_info
                 WHERE host_info.hostname='$psql_host'";
 
