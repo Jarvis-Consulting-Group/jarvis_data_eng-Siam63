@@ -1,11 +1,12 @@
-ssign CLI arguments to variables
+#!/bin/bash
+
 psql_host=$1
 psql_port=$2
 db_name=$3
 psql_user=$4
 psql_password=$5
 
-#Check # of args, if =/ 5, wrong number of arguments
+# need 5 parameters
 if [ "$#" -ne 5 ]; then
     echo "Illegal number of parameters"
     exit 1
@@ -14,20 +15,20 @@ fi
 #Save machine statistics in MB and current machine hostname to variables
 vmstat_mb=$(vmstat --unit M)
 hostname=$(hostname -f)
-lscpu_out='lscpu'
+lscpu_out=`lscpu`
 
-cpu_number=$(echo "$lscpu_out" | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)
-cpu_architecture=$(echo "$lscpu_out" | egrep "^Architecture:" | awk '{print $2}' | xargs)
-cpu_model=$(echo "$lscpu_out" | egrep "^Model name:" | awk '{print $3,$4,$5}' | xargs)
-cpu_mhz=$(echo "$lscpu_out" | egrep "^CPU MHz:" | awk '{print $3}' | xargs)
-l2_cache=$(echo "$lscpu_out" | egrep "^L2 cache:" | awk '{print $3}' | xargs)
-total_mem=$(vmstat --unit M | tail -1 | awk '{print $4}')
-timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+#Retrieve hardware specification variables
+cpu_number=$(echo "$lscpu_out"  | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)
+cpu_architecture=$(echo "$lscpu_out"  | egrep "^Architecture:" | awk '{print $2}' | xargs)
+cpu_model=$(echo "$lscpu_out"  | egrep "^Model name:" | awk '{$1=$2=""; print $0}' | xargs)
+cpu_mhz=$(echo "$lscpu_out"  | egrep "^CPU MHz:" | awk '{print $3}' | xargs)
+l2_cache=$(echo "$lscpu_out"  | egrep "^L2 cache:" | awk '{print $3}' | xargs)
+total_mem=$(echo "$vmstat_mb" | tail -1 | awk '{print $4}' | xargs)
+timestamp=$(date '+%Y-%m-%d %H:%M:%S' | xargs)
 
-#PSQL command: Inserts server usage data into host_usage table
-#Note: be careful with double and single quotes
-insert_stmt="INSERT INTO host_usage(hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, total_mem, timestamp)
-VALUES('$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '$l2_cache', '$total_mem', '$timestamp')";
+# Insert hardware specifications into host_info table
+insert_stmt="INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, timestamp, total_mem)
+                  VALUES('$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '${l2_cache%%K}', '$timestamp', '$total_mem')";
 
 #set up env var for pql cmd
 export PGPASSWORD=$psql_password
