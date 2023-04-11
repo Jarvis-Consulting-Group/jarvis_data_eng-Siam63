@@ -20,15 +20,15 @@ lscpu_out=`lscpu`
 #Retrieve hardware specification variables
 cpu_number=$(echo "$lscpu_out"  | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)
 cpu_architecture=$(echo "$lscpu_out"  | egrep "^Architecture:" | awk '{print $2}' | xargs)
-cpu_model=$(echo "$lscpu_out"  | egrep "^Model name:" | awk '{$1=$2=""; print $0}' | xargs)
+cpu_model=$(echo "$lscpu_out"  | egrep "^Model name:" | awk '{$3,$4,$5}' | xargs)
 cpu_mhz=$(echo "$lscpu_out"  | egrep "^CPU MHz:" | awk '{print $3}' | xargs)
 l2_cache=$(echo "$lscpu_out"  | egrep "^L2 cache:" | awk '{print $3}' | xargs)
-total_mem=$(echo "$vmstat_mb" | tail -1 | awk '{print $4}')
-timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+total_mem=$(echo "$vmstat_mb" | tail -1 | awk '{print $4}' | xargs)
+timestamp=$(date '+%Y-%m-%d %H:%M:%S' | xargs)
 
 # Insert hardware specifications into host_info table
 insert_stmt="INSERT INTO host_info (hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, timestamp, total_mem)
-                  VALUES('$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '${l2_cache%%K}', '$timestamp', '$total_mem')";
+                  VALUES('$hostname', '$cpu_number', '$cpu_architecture', '$cpu_model', '$cpu_mhz', '$l2_cache', '$timestamp', '$total_mem')";
 
 #set up env var for pql cmd
 export PGPASSWORD=$psql_password
