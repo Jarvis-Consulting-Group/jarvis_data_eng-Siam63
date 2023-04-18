@@ -162,17 +162,52 @@ bash > crontab -e
 
 # Database Modelling
 
+host_info:
+
 | Name | Data Type |
 | --- | --- |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
-| Seconds | 301 |
+| id | SERIAL NOT NULL |
+| hostname | VARCHAR NOT NULL |
+| cpu_number | INT2 NOT NULL |
+| cpu_architecture | VARCHAR NOT NULL |
+| cpu_model | VARCHAR NOT NULL |
+| cpu_mhz | FLOA8 NOT NULL |
+| l2_cache | 301 INT4 NOT NULL|
+| "timestamp" | TIMESTAMP NULL |
+| total_mem | INT4 NULL |
 
+Constraint: host_info_pk PRIMARY KEY (id)
+Constraint: host_info_un UNIQUE (hostname)
 
-# Deployment
+host_usage:
+
+| Name | Data Type |
+| --- | --- |
+| "timestamp" | TIMESTAMP NOT NULL |
+| host_id | SERIAL NOT NULL |
+| memory_free | INT4 NOT NULL |
+| cpu_idel | INT2 NOT NULL |
+| cpu_kernel | INT2 NOT NULL |
+| disk_io | INT4 NOT NULL |
+| disk_available | INT4 NOT NULL|
+
+CONSTRAINT host_usage_host_info_fk FOREIGN KEY (host_id) REFERENCES host_info(id) 
+
+# Test & Deployment
+
+```
+# Test psql_docker.sh (by checking if the jrvs-psql container has been created)
+docker container ls -a -f name=jrvs-psql
+# Test psql_docker.sh (by checking if the jrvs-psql container is running)
+docker ps -f name=jrvs-psql
+# Test host_info.sh (by checking the content of the host_info database)
+SELECT * FROM host_info;
+# Test host_usage.sh (by checking the content of the host_usage database)
+SELECT * FROM host_usage;
+```
+
+In order to deploy the app, we need to have the code, docker installed, create a PSQL docker instance, create the corresponding tables in ddl.sql, retreive the information regarding hardware specifications and usage data, then automate the application using crontab.
+
+# Improvements
+1. Handle hardware updates
+2. Monitor memory used by the Crontab
