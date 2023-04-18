@@ -1,59 +1,243 @@
-# Faiazur Rahman . Jarvis Consulting
+# Introduction
 
-Hi, my name is Faiazur Rahman and I am a Full Stack Software Engineer with over 1 year of professional experience in the field. I have a strong foundation in both frontend and backend development, having worked in both capacities during my time at Formify and Capgemini respectively. My 5-month internship as a Frontend Software Engineer gave me the opportunity to gain hands-on experience in developing web applications using HTML, CSS, JavaScript, and ReactJS. During my 7 months as a Full Time Backend Software Engineer, I helped maintain the overall health of our backend system using SQL queries in order to facilitate for data manipulation. Additionally I am fluent in Java, with excellent knowledge and skills in Data Structures and Algorithms. Apart from my technical expertise, I have excellent interpersonal skills that enable me to work well with diverse teams. I am a super motivated, business-oriented, people person with a passion for creative problem solving. As a critical thinker, I enjoy tackling complex problems and developing innovative solutions to them. I am excited about the prospect of working with like-minded people, who share my passion for software engineering. My ultimate goal is to provide expert and creative solutions to some of the world's most complex problems, making me an excellent fit for any Software Engineering position.
+The purpose of this project was to familiarize ourselves with SQL and all the different commands and features it has to offer. We explored different concepts like JOINS, SELECT, WHERE, HAVING, ALIASES, AGGREGATE FUNCTIONS and more. The users of this would want to use this in order to explore SQL more in-depth and learn about different SQL concepts. 
 
-## Skills
+# Technologies
+- GIT/Github
+- PostgreSQL
+- Docker
 
-**Proficient:** Java, Linux/Bash, RDBMS/SQL, Agile/Scrum, Git/Github
+# SQL Queries
 
-**Competent:** JavaScript/TypeScript, ReactJS, Spring/Springboot, Angular, Python
+```
+psql -U <username> -f clubdata.sql -d postgres -x -q
+```
 
-**Familiar:** Express, NodeJS, Cloud Computing, Something, Something Else
+# Table Setup (DDL)
 
-## Jarvis Projects
+```
 
-Project source code: [https://github.com/jarviscanada/jarvis_data_eng_Siam63](https://github.com/jarviscanada/jarvis_data_eng_Siam63)
+CREATE TABLE cd.members
+    (
+       memid integer NOT NULL, 
+       surname character varying(200) NOT NULL, 
+       firstname character varying(200) NOT NULL, 
+       address character varying(300) NOT NULL, 
+       zipcode integer NOT NULL, 
+       telephone character varying(20) NOT NULL, 
+       recommendedby integer,
+       joindate timestamp NOT NULL,
+       CONSTRAINT members_pk PRIMARY KEY (memid),
+       CONSTRAINT fk_members_recommendedby FOREIGN KEY (recommendedby)
+            REFERENCES cd.members(memid) ON DELETE SET NULL
+    );
+    
+CREATE TABLE cd.facilities
+    (
+       facid integer NOT NULL, 
+       name character varying(100) NOT NULL, 
+       membercost numeric NOT NULL, 
+       guestcost numeric NOT NULL, 
+       initialoutlay numeric NOT NULL, 
+       monthlymaintenance numeric NOT NULL, 
+       CONSTRAINT facilities_pk PRIMARY KEY (facid)
+    );
+    
+CREATE TABLE cd.bookings
+    (
+       bookid integer NOT NULL, 
+       facid integer NOT NULL, 
+       memid integer NOT NULL, 
+       starttime timestamp NOT NULL,
+       slots integer NOT NULL,
+       CONSTRAINT bookings_pk PRIMARY KEY (bookid),
+       CONSTRAINT fk_bookings_facid FOREIGN KEY (facid) REFERENCES cd.facilities(facid),
+       CONSTRAINT fk_bookings_memid FOREIGN KEY (memid) REFERENCES cd.members(memid)
+    );
+    
+```
+
+# Answers from Exercises 
+
+-- Question 1
+
+INSERT INTO cd.facilities(facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
+VALUES(9, 'Spa', 20, 30, 100000, 800);
+
+--  Question 2
+
+INSERT INTO cd.facilities(facid, name, membercost, guestcost, initialoutlay, monthlymaintenance)
+SELECT (SELECT max(facid) FROM cd.facilities) + 1, 'Spa', 20, 30, 100000, 800;  
+
+-- Question 3
+
+UPDATE cd.facilities
+SET initialoutlay = 10000
+WHERE facid = 1;
+
+-- Question 4
+
+UPDATE cd.facilities facs
+SET membercost = (SELECT membercost * 1.1 FROM cd.facilities WHERE facid = 0),
+guestcost = (SELECT guestcost * 1.1 FROM cd.facilities WHERE facid = 0)
+WHERE facs.facid = 1;
+
+-- Question 5
+
+DELETE FROM cd.bookings;
+
+-- Question 6
+
+DELETE FROM cd.members WHERE memid = 37;
+
+-- Question 7
+
+SELECT facid, name, membercost, monthlymaintenance
+FROM cd.facilities
+WHERE membercost > 0 AND (membercost < monthlymaintenance / 50.0);
+
+-- Question 8
+
+SELECT * FROM cd.facilities
+WHERE name LIKE '%Tennis%';
+
+-- Question 9
+
+SELECT * FROM cd.facilities
+WHERE facid IN (1, 5);
+
+-- Question 10
+
+SELECT memid, surname, firstname, joindate
+FROM cd.members
+WHERE joindate >= '2012-09-01';
+
+-- Question 11
+
+SELECT surname FROM cd.members
+UNION SELECT name from cd.facilities;
+
+-- Question 12
+
+SELECT bks.starttime FROM cd.bookings bks
+INNER JOIN cd.members mems ON mems.memid = bks.memid
+WHERE mems.firstname = 'David' AND mems.surname = 'Farrell';
+
+-- Question 13
+
+SELECT bks.starttime AS start, facs.name AS name
+FROM cd.facilities facs
+INNER JOIN cd.bookings bks ON facs.facid = bks.facid
+WHERE
+facs.name IN ('Tennis Court 2','Tennis Court 1') AND
+bks.starttime >= '2012-09-21' AND
+bks.starttime < '2012-09-22'
+ORDER BY bks.starttime;
+
+-- Question 14
+
+SELECT mems.firstname AS memfname, mems.surname AS memsname, recs.firstname AS recfname, recs.surname AS recsname
+FROM cd.members mems
+LEFT OUTER JOIN cd.members recs
+ON recs.memid = mems.recommendedby
+ORDER BY memsname, memfname;     
+
+-- Question 15
+
+SELECT DISTINCT recs.firstname AS firstname, recs.surname AS surname
+FROM cd.members mems
+INNER JOIN cd.members recs
+ON recs.memid = mems.recommendedby
+ORDER BY surname, firstname;
+
+-- Question 16
+
+SELECT DISTINCT recs.firstname AS firstname, recs.surname AS surname
+FROM cd.members mems
+INNER JOIN cd.members recs
+ON recs.memid = mems.recommendedby
+ORDER BY surname, firstname;
+
+-- Question 17
+
+SELECT DISTINCT mems.firstname || ' ' || mems.surname AS member,
+(SELECT recs.firstname || ' ' || recs.surname AS recommender FROM cd.members recs
+WHERE recs.memid = mems.recommendedby)
+
+FROM cd.members mems 
+ORDER BY member;
+
+-- Question 18
+
+SELECT recommendedby, COUNT(*)
+FROM cd.members
+WHERE recommendedby IS NOT NULL
+GROUP BY recommendedby
+ORDER BY recommendedby;
+
+-- Question 19
+
+SELECT facid, SUM(slots) AS "Total Slots"
+FROM cd.bookings
+GROUP BY facid
+ORDER BY facid;
+
+-- Question 20
+
+SELECT facid, SUM(slots) as "Total Slots"
+FROM cd.bookings
+WHERE starttime >= '2012-09-01' AND starttime < '2012-10-01'
+GROUP BY facid
+ORDER BY SUM(slots);
+
+-- Question 21
+
+SELECT facid, EXTRACT(month FROM starttime) AS month, SUM(slots) as "Total Slots"
+FROM cd.bookings
+WHERE EXTRACT(year FROM starttime) = 2012
+GROUP BY facid, month
+ORDER BY facid, month;
+
+-- Question 22
+
+SELECT COUNT(DISTINCT memid) FROM cd.bookings;
+
+-- Question 23
+
+SELECT mems.surname, mems.firstname, mems.memid, MIN(bks.starttime) AS starttime
+FROM cd.bookings bks
+INNER JOIN cd.members mems ON mems.memid = bks.memid
+WHERE starttime >= '2012-09-01'
+GROUP BY mems.surname, mems.firstname, mems.memid
+ORDER BY mems.memid;
+
+-- Question 24
+
+SELECT COUNT(*) OVER(), firstname, surname
+FROM cd.members
+ORDER BY joindate;
+
+-- Question 25
+
+SELECT facid, total FROM(
+  	SELECT facid, sum(slots) total, rank() OVER (ORDER BY SUM(slots) DESC) rank
+  	FROM cd.bookings
+  	GROUP BY facid
+  ) AS ranked
+WHERE rank=1
 
 
-**Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/linux_sql)]: The purpose of this project was to develop an automated linux monitoring agent. The agent extracts various pieces of information in the user's system including but not limited to, the number of CPUs, CPU architecture, system speed in MHz, and so on. Our objective was to create two bash file scripts, one for host information adn another for host usage. The host info bash file retreives hardware specifications of the user's system, and the host usage bash file retreives the user's system's usage specifications. We then created a PostgreSQL database, in which we inserted all of the corresponding specifications into. We then verified the accuracy of the data by running a select statement in our PSQL database to verify the correct data were being show. This was done completely on a Docker container which created our database, in place of a Virtual Machine, since Docker is a lot more light-weight than a typical VM.
+-- Question 26
 
-**Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/core_java)]:
-      
-  - Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
-  - Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.
+SELECT surname || ', ' || firstname AS name FROM cd.members          
 
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/springboot)]: Not Started
+-- Question 27
 
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/python_data_anlytics)]: Not Started
+SELECT memid, telephone FROM cd.members WHERE telephone ~ '[()]';          
 
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/hadoop)]: Not Started
+-- Question 28
 
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/spark)]: Not Started
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/cloud_devops)]: Not Started
-
-
-## Highlighted Projects
-**Web app for resturant** [[GitHub](https://github.com/jarviscanada/jarvis_profile_builder)]: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
-
-**Machine Learning**: Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.
-
-
-## Professional Experiences
-
-**Software Developer, Jarvis (2020-present)**: Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.
-
-**Tutor, XYZ Company (2019)**: Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.
-
-
-## Education
-**Toronto Metropolitan University (2017-2022)**, Bachelors of Science, Applied Mathematics and Computer Science (Honors)
-- Dean's List (2019 - 2022)
-- GPA: 3.0/4.33
-
-
-## Miscellaneous
-- Avid Fish Keeper
-- Biking
-- Avid Car and Watch Enthusiast
+SELECT substr (mems.surname, 1, 1) AS letter, COUNT(*) AS count
+FROM cd.members mems
+GROUP BY letter
+ORDER BY letter;
