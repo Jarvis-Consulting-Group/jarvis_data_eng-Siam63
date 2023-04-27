@@ -1,14 +1,7 @@
 package ca.jrvs.apps.grep;
 
-//import com.sun.corba.se.impl.orb.ORBConfiguratorImpl;
-//import com.sun.org.slf4j.internal.Logger;
-//import com.sun.org.slf4j.internal.LoggerFactory;
-//import org.apache.log4j.BasicConfigurator;
-
 import org.apache.log4j.BasicConfigurator;
-//import org.apache.log4j.BasicConfigurator;
-//import org.apache.log4j.Logger;
-//
+
 import java.io.*;
 import java.util.*;
 
