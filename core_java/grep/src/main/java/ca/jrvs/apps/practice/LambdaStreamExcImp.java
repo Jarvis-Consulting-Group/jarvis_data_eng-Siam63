@@ -115,7 +115,7 @@ public class LambdaStreamExcImp implements LambdaStreamExc{
         String[] messages = {"a", "b", "c"};
 //        lse.printMessage(messages, printer);
 
-        IntStream intStrea6 = lse.createIntStream(arr);
+        IntStream intStream = lse.createIntStream(arr);
 //        lse.printOdd(intStream, printer);
     }
 }
