@@ -14,14 +14,14 @@
   "github_repo_root_url": "https://github.com/jarviscanada/jarvis_data_eng_Siam63",
   "highlighted_projects": [
     {
-      "description": "Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.",
-      "git_url": "https://github.com/jarviscanada/jarvis_profile_builder",
-      "name": "Web app for resturant"
+      "description": "Collaborated with a team to design a fully functioning online e-commerce web application. This project allows users to browse through various products, add items to their cart, make purchases, and receive billing and shipping information. This was designed using HTML, CSS, AngularJS, Apache HTTP Server, PHP, MySQL, and XAMPP",
+      "git_url": "https://github.com/Siam63/tech-verse",
+      "name": "Techverse - Online E-Commerce Website"
     },
     {
-      "description": "Suspendisse a tincidunt odio. Suspendisse posuere luctus aliquet. Quisque magna tellus, tempor vitae arcu sed, volutpat scelerisque lacus. Aliquam varius pulvinar dapibus. Ut a tincidunt sem. Aenean sollicitudin fringilla erat ut imperdiet. Phasellus fermentum, enim vitae laoreet elementum, eros nisl hendrerit lorem.",
-      "git_url": null,
-      "name": "Machine Learning"
+      "description": "Designed and created a movie recommender which asks the user to rate several movies they have seen in the past, and recommends a movie they will likely enjoy based on the ratings. The application was created using ReactJS, HTML, CSS, JavaScript and Bootstrap.",
+      "git_url": "https://github.com/Siam63/movie_recommender",
+      "name": "Movie Recommender"
     }
   ],
   "jarvis_projects": [
@@ -32,15 +32,15 @@
     },
     {
       "description": [
-        "Twitter App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.",
-        "JDBC App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam.",
-        "Grep App: Curabitur laoreet tristique leo, eget suscipit nisi. Sed in sodales ex. Maecenas vitae tincidunt dui, et eleifend quam."
+        "Twitter App: N/A",
+        "JDBC App: The purpose of this project was to create a Java application that uses the JDBC API to connect to and interact with a PSQL (PostgreSQL) database. We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate for data manipulation in our PSQL database. Docker was used in order to create a docker container image which runs PSQL.",
+        "Grep App: The purppose of this project was to recreate the Linux GREP command, which essentially helps users search for words (Strings) in a file / folder or any other directory. This was done completely in Java 8, and we made use of several lambda functions, different libraries like log4j, Scanner, Logger etc and many utility classes. The application was also Dockerized on Docker, and pushed online to the docker hub where we can view the images."
       ],
       "git_url": "/core_java",
       "name": "Core Java Apps"
     },
     {
-      "description": "",
+      "description": "N/A",
       "git_url": "/springboot",
       "name": "Springboot App"
     },
@@ -50,17 +50,17 @@
       "name": "Python Data Analytics"
     },
     {
-      "description": "",
+      "description": "N/A",
       "git_url": "/hadoop",
       "name": "Hadoop"
     },
     {
-      "description": "",
+      "description": "N/A",
       "git_url": "/spark",
       "name": "Spark"
     },
     {
-      "description": "",
+      "description": "N/A",
       "git_url": "/cloud_devops",
       "name": "Cloud/DevOps"
     }
@@ -69,25 +69,26 @@
   "others": [
     {
       "bullets": [
-        "Avid Fish Keeper",
+        "Fish Keeping",
         "Biking",
-        "Avid Car and Watch Enthusiast"
+        "Avid Car and Watch Enthusiast",
+        "Fishing"
       ],
       "title": "Activities/Hobbies"
     }
   ],
   "professional_experience": [
     {
-      "company": "Jarvis",
-      "description": "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.",
-      "duration": "2020-present",
-      "title": "Software Developer"
+      "company": "Capgemini",
+      "description": "Worked in a diverse team with like-minded individuals to maintain the health of the backend system for one of the largest multinational insurance companies in the world. Implemented several SQL scripts to facilitate for data manipulation, making use of Python, CSV Libraries, Pandas, Stored Procedures, JIRA and Microsoft SQL. Successfully solved over 200 escalation tickets in SQL and JIRA, averaging 8-10 tickets per day.",
+      "duration": "2022",
+      "title": "A4 Software Engineer"
     },
     {
-      "company": "XYZ Company",
-      "description": "Donec mattis sed justo et sagittis. Vestibulum lacinia nulla ipsum. Curabitur imperdiet nibh vitae leo lacinia laoreet. Nullam accumsan, lectus ut maximus ultricies, augue justo egestas mi, vel bibendum felis.",
-      "duration": "2019",
-      "title": "Tutor"
+      "company": "Formify",
+      "description": "Contributed front-end expertise in HTML, CSS and JavaScript in order ot successfully redesign office-driven website to a modern gaming-driven website, drastically improving SEO and increasing number of site sessions by 20%.",
+      "duration": "2022",
+      "title": "Frontend Software Engineer Intern"
     }
   ],
   "skills": {
