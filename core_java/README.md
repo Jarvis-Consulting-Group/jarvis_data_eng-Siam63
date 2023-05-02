@@ -1,7 +1,3 @@
-# Introduction
-(50-100 words)
-Discuss the design of each app. What does the app do? What technologies have you used? (e.g. core java, libraries, lambda, IDE, docker, etc..)
-
 The purppose of this project was to recreate the Linux GREP command, which essentially helps users search for words (Strings) in a file / folder or any other directory.
 This was done completely in Java 8, and we made use of several lambda functions, different libraries like log4j, Scanner, Logger etc and many utility classes.
 The application was also Dockerized on Docker, and pushed online to the docker hub where we can view the images.
