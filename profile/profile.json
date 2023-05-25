@@ -32,37 +32,11 @@
     },
     {
       "description": [
-        "Twitter App: N/A",
         "JDBC App: The purpose of this project was to create a Java application that uses the JDBC API to connect to and interact with a PSQL (PostgreSQL) database. We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate for data manipulation in our PSQL database. Docker was used in order to create a docker container image which runs PSQL.",
         "Grep App: The purppose of this project was to recreate the Linux GREP command, which essentially helps users search for words (Strings) in a file / folder or any other directory. This was done completely in Java 8, and we made use of several lambda functions, different libraries like log4j, Scanner, Logger etc and many utility classes. The application was also Dockerized on Docker, and pushed online to the docker hub where we can view the images."
       ],
       "git_url": "/core_java",
       "name": "Core Java Apps"
-    },
-    {
-      "description": "N/A",
-      "git_url": "/springboot",
-      "name": "Springboot App"
-    },
-    {
-      "description": "",
-      "git_url": "/python_data_anlytics",
-      "name": "Python Data Analytics"
-    },
-    {
-      "description": "N/A",
-      "git_url": "/hadoop",
-      "name": "Hadoop"
-    },
-    {
-      "description": "N/A",
-      "git_url": "/spark",
-      "name": "Spark"
-    },
-    {
-      "description": "N/A",
-      "git_url": "/cloud_devops",
-      "name": "Cloud/DevOps"
     }
   ],
   "name": "Faiazur Rahman",
@@ -103,8 +77,8 @@
       "Express",
       "NodeJS",
       "Cloud Computing",
-      "Something",
-      "Something Else"
+      "Pandas",
+      "PySpark"
     ],
     "proficient": [
       "Java",

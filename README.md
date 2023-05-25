@@ -8,30 +8,19 @@ Hi, my name is Faiazur Rahman and I am a Full Stack Software Engineer with over 
 
 **Competent:** JavaScript/TypeScript, ReactJS, Spring/Springboot, Angular, Python
 
-**Familiar:** Express, NodeJS, Cloud Computing, Something, Something Else
+**Familiar:** Express, NodeJS, Cloud Computing, Pandas, PySpark
 
 ## Jarvis Projects
 
 Project source code: [https://github.com/jarviscanada/jarvis_data_eng_Siam63](https://github.com/jarviscanada/jarvis_data_eng_Siam63)
 
 
-**Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/linux_sql)]: The purpose of this project was to develop an automated linux monitoring agent. The agent extracts various pieces of information in the user's system including but not limited to, the number of CPUs, CPU architecture, system speed in MHz, and so on. Our objective was to create two bash file scripts, one for host information and another for host usage. The host info bash file retreives hardware specifications of the user's system, and the host usage bash file retreives the user's system's usage specifications. We then created a PostgreSQL database, in which we inserted all of the corresponding specifications into. We then verified the accuracy of the data by running a select statement in our PSQL database to verify the correct data were being show. This was done completely on a Docker container which created our database, in place of a Virtual Machine, since Docker is a lot more light-weight than a typical VM.
+**Cluster Monitor** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/linux_sql)]: The purpose of this project was to develop an automated linux monitoring agent. The agent extracts various pieces of information in the user's system including but not limited to, the number of CPUs, CPU architecture, system speed in MHz, and so on. Our objective was to create two bash file scripts, one for host information adn another for host usage. The host info bash file retreives hardware specifications of the user's system, and the host usage bash file retreives the user's system's usage specifications. We then created a PostgreSQL database, in which we inserted all of the corresponding specifications into. We then verified the accuracy of the data by running a select statement in our PSQL database to verify the correct data were being show. This was done completely on a Docker container which created our database, in place of a Virtual Machine, since Docker is a lot more light-weight than a typical VM.
 
 **Core Java Apps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/core_java)]:
       
-  - Twitter App: N/A
   - JDBC App: The purpose of this project was to create a Java application that uses the JDBC API to connect to and interact with a PSQL (PostgreSQL) database. We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate for data manipulation in our PSQL database. Docker was used in order to create a docker container image which runs PSQL.
   - Grep App: The purppose of this project was to recreate the Linux GREP command, which essentially helps users search for words (Strings) in a file / folder or any other directory. This was done completely in Java 8, and we made use of several lambda functions, different libraries like log4j, Scanner, Logger etc and many utility classes. The application was also Dockerized on Docker, and pushed online to the docker hub where we can view the images.
-
-**Springboot App** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/springboot)]: N/A
-
-**Python Data Analytics** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/python_data_anlytics)]: Not Started
-
-**Hadoop** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/hadoop)]: N/A
-
-**Spark** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/spark)]: N/A
-
-**Cloud/DevOps** [[GitHub](https://github.com/jarviscanada/jarvis_data_eng_Siam63/tree/master/cloud_devops)]: N/A
 
 
 ## Highlighted Projects
