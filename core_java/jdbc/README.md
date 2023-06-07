@@ -1,7 +1,7 @@
 # Introduction
 
 The purpose of this project was to create a Java application that uses the JDBC API to connect to and interact with a PSQL (PostgreSQL) database. 
-We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate for data manipulation in our PSQL database.
+We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate data manipulation in our PSQL database.
 Docker was used in order to create a docker container image which runs PSQL. Once a connection was established between Java and PSQL, we then created
 the CRUD operations and verified our solution by looking at our database. We imported various "dummy" or default values into the table and performed
 CRUD operations on them. We verified by doing a SELECT statement with a WHERE clause specifying which ID to look for. Maven was used in order to
