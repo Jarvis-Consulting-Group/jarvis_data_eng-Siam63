@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# Assign CLI arguments to variables
 psql_host=$1
 psql_port=$2
 db_name=$3
 psql_user=$4
 psql_password=$5
 
-#Check # of args, if =/ 5, wrong number of arguments
 if [ "$#" -ne 5 ]; then
     echo "Illegal number of parameters"
     exit 1
@@ -16,6 +14,7 @@ fi
 #Save machine statistics in MB and current machine hostname to variables
 vmstat_mb=$(vmstat --unit M)
 hostname=$(hostname -f)
+
 lscpu_out='lscpu'
 
 cpu_number=$(echo "$lscpu_out" | egrep "^CPU\(s\):" | awk '{print $2}' | xargs)

@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# Assign CLI arguments to variables
 psql_host=$1
 psql_port=$2
 db_name=$3
 psql_user=$4
 psql_password=$5
 
-#Check # of args, if =/ 5, wrong number of arguments
 if [ "$#" -ne 5 ]; then
     echo "Illegal number of parameters"
     exit 1
