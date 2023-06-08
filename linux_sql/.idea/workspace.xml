@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e8eb0378-9771-4dbc-ae52-f4c44d42adbd" name="Changes" comment="new code added">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/linux_sql.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud_devops/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core_java/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hadoop/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/.host_info.sh.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/.host_usage.sh.swp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/scripts/psql_docker.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/sql/ddl.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linux_sql/sql/queries.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/practice/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/host_usage.sh" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/host_usage.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spark/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/springboot/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/ddl.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/ddl.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/psql_docker" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2O6MUh3FyrEiGWaseSvsTxZ0dX2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/centos/dev/jarvis_data_eng_siamrahman711/linux_sql&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e8eb0378-9771-4dbc-ae52-f4c44d42adbd" name="Changes" comment="" />
+      <created>1680876598909</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680876598909</updated>
+    </task>
+    <task id="LOCAL-00001" summary="new code added">
+      <created>1680879480427</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1680879480427</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new code added">
+      <created>1680879511637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1680879511637</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="new code added" />
+    <option name="LAST_COMMIT_MESSAGE" value="new code added" />
+  </component>
+</project>
