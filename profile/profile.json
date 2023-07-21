@@ -38,6 +38,11 @@
       ],
       "git_url": "/core_java",
       "name": "Core Java Apps"
+    },
+    {
+      "description": "The purpose of this project is to implement a ReactJS front-end and back-end in order to hit endpoints to fetch (retreive) data from clients who have made several stock trades. The user can add their own stock purchase and it will be appended to a list which is then shown in the Dashboard component. There is also a Quotes component to show further details about the purchases of the stock, including the name, price etc. The backend was implemented using Express in order to make requests to an API depending on several endpoints. The data is then saved and stored in the application to ensure consistency.",
+      "git_url": "/react-project",
+      "name": "React Trading App"
     }
   ],
   "name": "Faiazur Rahman",

@@ -56,6 +56,9 @@ jarvis_projects:
       - "Twitter App: The purpose of this project is to develop a Java application that can post, delete and retreive / show tweets. The application makes use of the Twitter version 2.0 API and several libraries in order to parse objects to JSON and read from it."
       - "JDBC App: The purpose of this project was to create a Java application that uses the JDBC API to connect to and interact with a PSQL (PostgreSQL) database. We implemented simple CRUD operations such as Create, Read, Update and Delete, in order to facilitate for data manipulation in our PSQL database. Docker was used in order to create a docker container image which runs PSQL."
       - "Grep App: The purppose of this project was to recreate the Linux GREP command, which essentially helps users search for words (Strings) in a file / folder or any other directory. This was done completely in Java 8, and we made use of several lambda functions, different libraries like log4j, Scanner, Logger etc and many utility classes. The application was also Dockerized on Docker, and pushed online to the docker hub where we can view the images."
+  - name: "React Trading App"
+    git_url: "/react-project"
+    description: The purpose of this project is to implement a ReactJS front-end and back-end in order to hit endpoints to fetch (retreive) data from clients who have made several stock trades. The user can add their own stock purchase and it will be appended to a list which is then shown in the Dashboard component. There is also a Quotes component to show further details about the purchases of the stock, including the name, price etc. The backend was implemented using Express in order to make requests to an API depending on several endpoints. The data is then saved and stored in the application to ensure consistency. 
 
 # List of personal or academic projects
 # Feel free to add more projects
